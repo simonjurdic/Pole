@@ -22,7 +22,8 @@ namespace Pole
     {
         int a;
         int b;
-        int[] pole = new int[100];
+        int[] pole = new int[10];
+        List<int> seznam = new List<int>();
             
         public MainWindow()
         {
@@ -31,6 +32,7 @@ namespace Pole
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //pole = new int[pole.Length + 1];
             Random random = new Random();
             //a = random.Next(1, 100);
             //b = random.Next(1, 100);
@@ -51,9 +53,30 @@ namespace Pole
             txtvypis.Text += "\r\n";
 
             //jiný způsob vypsání prků pole do string
-            txtvypis.Text += string.Join(";", pole);
+            txtvypis.Text += string.Join("; ", pole);
 
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Random random = new Random();
+            seznam.Add(random.Next(1, 100));
+            txtvypis.Text = "";
+            for (int i = 0; i < seznam.Count; i++)
+            {
+                txtvypis.Text += seznam[i].ToString() + "; ";
+            }
+
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if(seznam.Count > 0)
+            {
+                seznam.RemoveAt(0);
+            }
+            txtvypis.Text = string.Join("; ", seznam);
+        }
     }
 }
